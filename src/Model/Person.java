@@ -1,3 +1,4 @@
+package Model;
 
 public class Person {
     static Integer staticId = 0;
