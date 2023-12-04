@@ -1,8 +1,19 @@
 package Model;
 
+import com.google.gson.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Person {
-    static Integer staticId = 0;
-    private Integer id = ++staticId;
+    private String username;
+    private String email;
+    private String password;
+    private final List<Car> cars = new ArrayList<>();
+
+    private static Integer staticId = 0;
+    private final Integer id = ++staticId;
+    public Integer getId() { return id; }
 
     public void setUsername(String username) {
         this.username = username;
@@ -28,17 +39,20 @@ public class Person {
         return password;
     }
 
-    private String username;
-    private String email;
-    private String password;
-
-    public Integer getId() {
-        return id;
-    }
-
     @Override
     public String toString() {
-        return "( " + id + " \n email : " + email + " \n username: " + username + "\n password: " + password + "\n )";
+        return "( " + this.getId() + " \n email : " + email + " \n username: " + username + "\n password: " + password + "\n )";
+    }
+
+    public void addCar(Car car) {
+        if (!cars.contains(car)) {
+            car.setOwner(this);
+            cars.add(car);
+        }
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
 

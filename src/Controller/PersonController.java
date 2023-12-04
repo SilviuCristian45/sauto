@@ -1,26 +1,30 @@
 package Controller;
 
 import Model.Person;
+import Util.PersonSerializer;
 import Util.Repositories;
 import Util.Utils;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Map;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 public class PersonController implements HttpHandler {
 
-    private final Gson gson = new Gson();
+    private final Gson gson = new GsonBuilder().registerTypeAdapter(Person.class, new PersonSerializer()).create();
+    private static final Logger LOGGER = Logger.getLogger(CarController.class.getName());
 
     @Override
     public void handle(HttpExchange httpExchange) {
         try {
             handleResponse(httpExchange);
         } catch (Exception err) {
-            System.out.println(err.toString());
+            LOGGER.severe(err.toString());
         }
     }
 
@@ -69,7 +73,7 @@ public class PersonController implements HttpHandler {
                             }
                     );
                     Repositories.personRepository.updateUser(personToUpdate);
-                    Utils.sendResponse(httpExchange, "user updated succesfully");
+                    Utils.sendResponse(httpExchange, "user updated successfully");
                 } else {
                     Utils.sendResponse(httpExchange, "User not updated");
                 }

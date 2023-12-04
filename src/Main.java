@@ -1,3 +1,4 @@
+import Controller.CarController;
 import Controller.PersonController;
 import com.sun.net.httpserver.HttpServer;
 
@@ -9,6 +10,7 @@ public class Main {
         HttpServer server = HttpServer.create(new java.net.InetSocketAddress(port), 0);
 
         server.createContext("/users", new PersonController());
+        server.createContext("/cars", new CarController());
 
         server.setExecutor(null);
 
