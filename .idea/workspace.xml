@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ce4b356e-c537-41c4-9eeb-0f82876bbf64" name="Changes" comment="initial">
+    <list default="true" id="ce4b356e-c537-41c4-9eeb-0f82876bbf64" name="Changes" comment="project-structure">
+      <change afterPath="$PROJECT_DIR$/src/Controller/CarController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CarRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Util/CarSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Util/PersonSerializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PersonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/Repositories.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/Repositories.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +31,19 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="master" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -84,5 +107,29 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Repository/CarRepository.java</url>
+          <line>23</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Util/CarSerializer.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="cars.get(0).owner" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

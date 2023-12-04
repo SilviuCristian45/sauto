@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class Utils {
+
     public static Map<String, String> parseQuery(String query) throws IOException {
         Map<String, String> result = new HashMap<>();
         if (query != null) {
@@ -37,6 +38,12 @@ public class Utils {
         os.close();
     }
 
+    public static void sendResponse(int statusCode, HttpExchange httpExchange, String responseData) throws IOException {
+        OutputStream os = httpExchange.getResponseBody();
+        httpExchange.sendResponseHeaders(statusCode, responseData.length());
+        os.write(responseData.getBytes());
+        os.close();
+    }
     public static Optional<String> getQueryParamValue(URI uri, String key) throws IOException {
         String query = uri.getQuery();
         Map<String, String> params = parseQuery(query);

@@ -46,4 +46,10 @@ public class PersonRepository {
             person.setUsername(personToUpdate.getUsername());
         }
     }
+
+    public void deleteUserCarById(int id) {
+        this.people.forEach( person -> {
+            person.getCars().removeIf( car -> car.getId() == id);
+        });
+    }
 }
