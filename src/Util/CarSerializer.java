@@ -14,6 +14,9 @@ public class CarSerializer implements JsonSerializer<Car> {
         jsonObject.addProperty("model", car.getModel());
         jsonObject.addProperty("year", car.getYear());
         jsonObject.addProperty("price", car.getPrice());
+        jsonObject.addProperty("fuelType", car.getFuelType().toString());
+        jsonObject.addProperty("VIN", car.getVIN());
+        jsonObject.addProperty("color", car.getColor().toString());
         return jsonObject;
     }
 }

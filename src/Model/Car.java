@@ -6,6 +6,10 @@ public class Car {
     private int year;
     private int price;
     private Person owner = null;
+    private FuelType fuelType;
+    private String VIN;
+    private Color color;
+
     public Car() {}
     private static Integer staticId = 0;
     private final Integer id = ++staticId;
@@ -45,6 +49,18 @@ public class Car {
     }
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public FuelType getFuelType() {
+        return fuelType;
+    }
+
+    public String getVIN() {
+        return VIN;
+    }
+
+    public Color getColor() {
+        return color;
     }
 }
 
