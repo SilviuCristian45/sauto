@@ -1,5 +1,8 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
     private String brand;
     private String model;
@@ -9,6 +12,8 @@ public class Car {
     private FuelType fuelType;
     private String VIN;
     private Color color;
+
+    private List<String> images = new ArrayList<>();
 
     public Car() {}
     private static Integer staticId = 0;
@@ -62,5 +67,6 @@ public class Car {
     public Color getColor() {
         return color;
     }
+    public void addImage(String image) { images.add(image); }
 }
 
