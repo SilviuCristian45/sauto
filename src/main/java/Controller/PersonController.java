@@ -15,7 +15,6 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 public class PersonController implements HttpHandler {
-
     private final Gson gson = new GsonBuilder().registerTypeAdapter(Person.class, new PersonSerializer()).create();
     private static final Logger LOGGER = Logger.getLogger(CarController.class.getName());
 
@@ -49,7 +48,8 @@ public class PersonController implements HttpHandler {
                     String userJson = gson.toJson(userFound);
                     Utils.sendResponse(httpExchange, userJson);
                 } else {
-                    String usersJson = gson.toJson(Repositories.personRepository.getUsers());
+                    String usersJson = gson.toJson(Utils.databaseConnector.getAllPersons());
+                    //String usersJson = gson.toJson(Repositories.personRepository.getUsers());
                     Utils.sendResponse(httpExchange, usersJson);
                 }
                 break;
