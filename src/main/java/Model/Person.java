@@ -12,7 +12,15 @@ public class Person {
     private final List<Car> cars = new ArrayList<>();
 
     private static Integer staticId = 0;
-    private final Integer id = ++staticId;
+    private Integer id = ++staticId;
+
+    public Person(int id, String username, String email, String password) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     public Integer getId() { return id; }
 
     public void setUsername(String username) {
