@@ -8,28 +8,32 @@ public class Car {
     private String model;
     private int year;
     private int price;
-    private Person owner = null;
+    private int owner;
     private FuelType fuelType;
     private String VIN;
     private Color color;
 
     private List<String> images = new ArrayList<>();
+    private Integer id;
 
-    public Car() {}
-    private static Integer staticId = 0;
-    private final Integer id = ++staticId;
-    public Integer getId() { return id; }
-    public Person getOwner() {
-        return owner;
-    }
-    public void setOwner(Person owner) {
-        this.owner = owner;
-    }
-    public Car(String brand, String model, int year, int price) {
+    public Car(int id, String brand, String model, int year, int price,int owner, String fuelType, String VIN, String color ) {
+        this.id = id;
         this.brand = brand;
         this.model = model;
         this.year = year;
         this.price = price;
+        this.owner = owner;
+        this.fuelType = FuelType.valueOf(fuelType);
+        this.VIN = VIN;
+        this.color = Color.valueOf(color);
+    }
+
+    public Integer getId() { return id; }
+    public int getOwner() {
+        return owner;
+    }
+    public void setOwner(int owner) {
+        this.owner = owner;
     }
     public String getBrand() {
         return brand;

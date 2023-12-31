@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce4b356e-c537-41c4-9eeb-0f82876bbf64" name="Changes" comment="business-logic-car-model&#10;1. FuelType enum added&#10;1. fuelType attribute for car model added&#10;3. Color of car added">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_44_1_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_36.xml" afterDir="false" />
+    <list default="true" id="ce4b356e-c537-41c4-9eeb-0f82876bbf64" name="Changes" comment="sqlite3 implementation &#10;1. replace in memory repositories&#10;2. work in progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sAutoBackend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/sAutoBackend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/CarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/PersonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Database/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database/DatabaseConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/CarRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repository/CarRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701682338486</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="sqlite3 implementation &#10;1. replace in memory repositories&#10;2. work in progress">
+      <created>1703822202617</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703822202617</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -147,15 +154,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="business-logic-car-model&#10;1. FuelType enum added&#10;1. fuelType attribute for car model added&#10;3. Color of car added" />
-    <option name="LAST_COMMIT_MESSAGE" value="business-logic-car-model&#10;1. FuelType enum added&#10;1. fuelType attribute for car model added&#10;3. Color of car added" />
+    <MESSAGE value="sqlite3 implementation &#10;1. replace in memory repositories&#10;2. work in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="sqlite3 implementation &#10;1. replace in memory repositories&#10;2. work in progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Database/DatabaseConnector.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="1" />
+          <line>168</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

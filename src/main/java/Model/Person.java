@@ -52,13 +52,6 @@ public class Person {
         return "( " + this.getId() + " \n email : " + email + " \n username: " + username + "\n password: " + password + "\n )";
     }
 
-    public void addCar(Car car) {
-        if (!cars.contains(car)) {
-            car.setOwner(this);
-            cars.add(car);
-        }
-    }
-
     public List<Car> getCars() {
         return cars;
     }
