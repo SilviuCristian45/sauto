@@ -16,11 +16,6 @@ public class CarRepository {
 
     public List<Car> getCars() { return cars; }
 
-    public void addCar(Car car, Person owner) {
-        cars.add(car);
-        owner.addCar(car);
-    }
-
     public void deleteCarById(int id) {
         cars.removeIf(car -> car.getId() == id);
     }

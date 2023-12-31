@@ -1,5 +1,6 @@
 package Util;
 
+import Database.DatabaseConnector;
 import Firebase.FirebaseConfig;
 import com.sun.net.httpserver.HttpExchange;
 import org.apache.commons.fileupload.FileItemIterator;
@@ -7,15 +8,28 @@ import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLException;
 import java.util.*;
 
 public class Utils {
+
+    public static EnvConfig envConfig = new EnvConfig();
+    public static DatabaseConnector databaseConnector;
+
+    static {
+        try {
+            databaseConnector = new DatabaseConnector();
+        } catch (SQLException e) {
+            System.out.println("sql exception " + e.getMessage());
+        }
+    }
 
     public static Map<String, String> parseQuery(String query) throws IOException {
         Map<String, String> result = new HashMap<>();

@@ -40,7 +40,6 @@ public class CarController implements HttpHandler {
 
     public CarController() throws IOException {
         firebaseConfig = new FirebaseConfig();
-
     }
 
     @Override
@@ -64,14 +63,8 @@ public class CarController implements HttpHandler {
                     break;
                 }
                 int id = Integer.parseInt(stringId.get());
-                var user = Repositories.personRepository.getUserById(id);
-                if (user.isEmpty()) {
-                    LOGGER.severe("not found a user");
-                    Utils.sendResponse(404, httpExchange, "not found a user");
-                } else {
-                    Person person = user.get();
-                    Utils.sendResponse(httpExchange, gson.toJson(person.getCars()));
-                }
+                List<Car> cars = Utils.databaseConnector.getCarsOfUser(id);
+                Utils.sendResponse(httpExchange, gson.toJson(cars));
                 break;
             }
             case "POST": {
@@ -81,13 +74,13 @@ public class CarController implements HttpHandler {
                     break;
                 }
                 int id = Integer.parseInt(stringId.get());
-                Optional<Person> optionalPerson = Repositories.personRepository.getUserById(id);
-                if (optionalPerson.isEmpty()) {
-                    LOGGER.severe("NO PERSON MATCHING THE GIVEN ID");
-                    Utils.sendResponse(404, httpExchange, "NO PERSON MATCHING THE GIVEN ID");
+                Optional<Car> optionalCar = Utils.databaseConnector.getCarById(id);
+                if (optionalCar.isEmpty()) {
+                    LOGGER.severe("NO CAR THE GIVEN ID");
+                    Utils.sendResponse(404, httpExchange, "NO CAR MATCHING THE GIVEN ID");
                     break;
                 }
-                Person person = optionalPerson.get();
+                Car car = optionalCar.get();
 
                 String contentType = httpExchange.getRequestHeaders().getFirst("Content-Type");
 
@@ -95,7 +88,8 @@ public class CarController implements HttpHandler {
                 if (contentType.equals("application/json")) {
                     String requestBody = new String(httpExchange.getRequestBody().readAllBytes());
                     Car carToAdd = gson.fromJson(requestBody, Car.class);
-                    Repositories.carRepository.addCar(carToAdd, person);
+                    Utils.databaseConnector.addCar(carToAdd, id);
+                    //Repositories.carRepository.addCar(carToAdd, person);
                     Utils.sendResponse(httpExchange, requestBody);
                 } else {
                     FileItemFactory factory = new DiskFileItemFactory();
@@ -111,7 +105,7 @@ public class CarController implements HttpHandler {
                             imageURLs.add(firebaseConfig.uploadImage(fileItem.getName(), fileInputStream));
                         }
                     }
-                    imageURLs.forEach( imageURL -> Repositories.carRepository.addImageToCar(imageURL, id));
+                    imageURLs.forEach( imageURL -> Utils.databaseConnector.addCarImage(imageURL, id));
                     Utils.sendResponse(httpExchange, imageURLs.toString());
                 }
             }
@@ -123,8 +117,7 @@ public class CarController implements HttpHandler {
                     break;
                 }
                 int id = Integer.parseInt(stringId.get());
-                Repositories.carRepository.deleteCarById(id);
-                Repositories.personRepository.deleteUserCarById(id);
+                Utils.databaseConnector.deleteCarById(id);
                 Utils.sendResponse(httpExchange, "car has been deleted");
                 break;
         }

@@ -1,5 +1,6 @@
 package Controller;
 
+import Database.DatabaseConnector;
 import Model.Person;
 import Util.PersonSerializer;
 import Util.Repositories;
@@ -15,7 +16,6 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 public class PersonController implements HttpHandler {
-
     private final Gson gson = new GsonBuilder().registerTypeAdapter(Person.class, new PersonSerializer()).create();
     private static final Logger LOGGER = Logger.getLogger(CarController.class.getName());
 
@@ -37,30 +37,30 @@ public class PersonController implements HttpHandler {
 
         switch (httpExchange.getRequestMethod()) {
             case "POST":
-                Person person = gson.fromJson(requestBody, Person.class); // deserializes json into target2
-                Repositories.personRepository.registerUser(person);
+                Person person = gson.fromJson(requestBody, Person.class);
+                Utils.databaseConnector.registerUser(person);
                 Utils.sendResponse(httpExchange, requestBody);
                 break;
 
             case "GET":
 
-                Optional<Person> userFound = Repositories.personRepository.getUserById(id);
+                Optional<Person> userFound = Utils.databaseConnector.getUserById(id);
                 if (userFound.isPresent()) {
                     String userJson = gson.toJson(userFound);
                     Utils.sendResponse(httpExchange, userJson);
                 } else {
-                    String usersJson = gson.toJson(Repositories.personRepository.getUsers());
+                    String usersJson = gson.toJson(Utils.databaseConnector.getAllPersons());
                     Utils.sendResponse(httpExchange, usersJson);
                 }
                 break;
 
             case "DELETE":
-                boolean userWasDeleted = Repositories.personRepository.deleteUserById(id);
+                boolean userWasDeleted = Utils.databaseConnector.deleteUserById(id);
                 Utils.sendResponse(httpExchange, gson.toJson(userWasDeleted));
                 break;
             case "PATCH":
                 Map<String, String> updateFields = gson.fromJson(requestBody, Map.class);
-                Optional<Person> existingUser = Repositories.personRepository.getUserById(id);
+                Optional<Person> existingUser = Utils.databaseConnector.getUserById(id);
 
                 if (existingUser.isPresent()) {
                     Person personToUpdate = existingUser.get();
@@ -69,10 +69,12 @@ public class PersonController implements HttpHandler {
                                     personToUpdate.setUsername(val);
                                 } else if (key.equals("email")) {
                                     personToUpdate.setEmail(val);
+                                } else if (key.equals("password")) {
+                                    personToUpdate.setPassword(val);
                                 }
                             }
                     );
-                    Repositories.personRepository.updateUser(personToUpdate);
+                    Utils.databaseConnector.updateUser(personToUpdate);
                     Utils.sendResponse(httpExchange, "user updated successfully");
                 } else {
                     Utils.sendResponse(httpExchange, "User not updated");

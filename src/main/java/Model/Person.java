@@ -12,7 +12,15 @@ public class Person {
     private final List<Car> cars = new ArrayList<>();
 
     private static Integer staticId = 0;
-    private final Integer id = ++staticId;
+    private Integer id = ++staticId;
+
+    public Person(int id, String username, String email, String password) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     public Integer getId() { return id; }
 
     public void setUsername(String username) {
@@ -42,13 +50,6 @@ public class Person {
     @Override
     public String toString() {
         return "( " + this.getId() + " \n email : " + email + " \n username: " + username + "\n password: " + password + "\n )";
-    }
-
-    public void addCar(Car car) {
-        if (!cars.contains(car)) {
-            car.setOwner(this);
-            cars.add(car);
-        }
     }
 
     public List<Car> getCars() {
